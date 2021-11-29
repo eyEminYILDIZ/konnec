@@ -9,5 +9,5 @@ import (
 func main() {
 	inventory := filer.ReadInventories()
 
-	fmt.Println(inventory.Inventories)
+	fmt.Println(inventory.Resources)
 }

@@ -8,10 +8,10 @@ import (
 )
 
 type InventoryFile struct {
-	Inventories []Inventory `yaml:"inventories"`
+	Resources []Resource `yaml:"resources"`
 }
 
-type Inventory struct {
+type Resource struct {
 	Name        string `yaml:"name"`
 	Ip          string `yaml:"ip"`
 	Domain      string `yaml:"domain"`
