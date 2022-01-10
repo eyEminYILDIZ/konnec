@@ -4,33 +4,22 @@ import (
 	"io/ioutil"
 	"log"
 
+	"github.com/eyEminYILDIZ/konnec/internal/types"
 	"gopkg.in/yaml.v2"
 )
 
-type InventoryFile struct {
-	Resources []Resource `yaml:"resources"`
-}
-
-type Resource struct {
-	Name        string `yaml:"name"`
-	Ip          string `yaml:"ip"`
-	Domain      string `yaml:"domain"`
-	Description string `yaml:"description"`
-}
-
-func ReadInventories() *InventoryFile {
+func ReadInventories() *types.InventoryFile {
 	yamlFile, err := ioutil.ReadFile("inventories.yaml")
 	if err != nil {
 		log.Printf("yamlFile.Get err   #%v ", err)
 	}
 
-	var inventory InventoryFile
-	c := &inventory
+	var inventory types.InventoryFile
 
-	err = yaml.Unmarshal(yamlFile, c)
+	err = yaml.Unmarshal(yamlFile, &inventory)
 	if err != nil {
 		log.Fatalf("Unmarshal: %v", err)
 	}
 
-	return c
+	return &inventory
 }
