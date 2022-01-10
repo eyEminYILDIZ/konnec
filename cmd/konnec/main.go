@@ -2,15 +2,23 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/eyEminYILDIZ/konnec/internal/dns_resolver"
 	"github.com/eyEminYILDIZ/konnec/internal/filer"
 )
 
 func main() {
-	inventory := filer.ReadInventories()
+	// Get inventoryFilePath
+	inventoryFilePath := "inventories.yaml"
+	if len(os.Args) > 1 {
+		inventoryFilePath = os.Args[1]
+	}
 
-	// Check DomainName-IP Matching
+	// Read inventory file
+	inventory := filer.ReadInventories(inventoryFilePath)
+
+	// Check domainName-ip matching
 	hasError, dnsResolveErrors := dns_resolver.CheckDomainNameIpMatching(inventory)
 
 	if hasError {

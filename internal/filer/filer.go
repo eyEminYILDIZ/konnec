@@ -8,8 +8,8 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func ReadInventories() *types.InventoryFile {
-	yamlFile, err := ioutil.ReadFile("inventories.yaml")
+func ReadInventories(inventoryFilePath string) *types.InventoryFile {
+	yamlFile, err := ioutil.ReadFile(inventoryFilePath)
 	if err != nil {
 		log.Printf("yamlFile.Get err   #%v ", err)
 	}
