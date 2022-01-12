@@ -29,7 +29,7 @@ func main() {
 		matchedResource := inventory.GetResourceByName(checklistItem.ResourceName)
 		if matchedResource == nil {
 			fmt.Println("Resource Name did not matched with any inventory resource: ", checklistItem.ResourceName)
-			return
+			continue
 		}
 
 		fmt.Println("\n#", matchedResource.Name)
