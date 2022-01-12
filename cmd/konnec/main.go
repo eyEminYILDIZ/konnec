@@ -26,7 +26,7 @@ func main() {
 	checklist := filer.ReadChecklist(checklistFilePath)
 
 	for _, checklistItem := range checklist.Items {
-		matchedResource := inventory.GetResourceWithName(checklistItem.ResourceName)
+		matchedResource := inventory.GetResourceByName(checklistItem.ResourceName)
 		if matchedResource == nil {
 			fmt.Println("Resource Name did not matched with any inventory resource: ", checklistItem.ResourceName)
 			return
