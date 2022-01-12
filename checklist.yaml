@@ -1,7 +1,7 @@
 version: "konnec-v0.1"
-checklist:
-  - resource_name: google
+items:
+  - resource_name: "google"
     conditions:
       - type: "domain_ip_resolution"
         value: "172.217.169.206"  
-        message: Domain name must resolve as provided IP
+        message: "Domain name must resolve as provided IP"

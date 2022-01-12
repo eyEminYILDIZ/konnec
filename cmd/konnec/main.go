@@ -25,20 +25,34 @@ func main() {
 	inventory := filer.ReadInventory(inventoryFilePath)
 	checklist := filer.ReadChecklist(checklistFilePath)
 
-	fmt.Println(checklist)
-
-	// Check domainName-ip matching
-	hasError, dnsResolveErrors := dns_resolver.CheckDomainNameIpMatching(inventory)
-
-	if hasError {
-		fmt.Println("Some resource(s) domain name results did not matched provided IP address !")
-
-		for _, errString := range dnsResolveErrors {
-			fmt.Println(errString)
+	for _, checklistItem := range checklist.Items {
+		matchedResource := inventory.GetResourceWithName(checklistItem.ResourceName)
+		if matchedResource == nil {
+			fmt.Println("Resource Name did not matched with any inventory resource: ", checklistItem.ResourceName)
+			return
 		}
-	} else {
-		fmt.Println("All resources domain name DNS resolving matched provided IP address")
+
+		fmt.Println("\n#", matchedResource.Name)
+
+		for _, checklistCondition := range checklistItem.Conditions {
+			flagSuccedded := false
+			switch checklistCondition.Type {
+
+			case "domain_ip_resolution":
+				flagSuccedded = dns_resolver.ResolveDomainIpMatching(matchedResource.Domain, checklistCondition.Value)
+
+			default:
+				fmt.Println("Condition did not matched any Konnec Feature: ", checklistCondition.Type)
+			}
+
+			if flagSuccedded {
+				fmt.Println("Ok:", checklistCondition.Type)
+			} else {
+				fmt.Println("Failed:", checklistCondition.Type)
+			}
+		}
+
 	}
 
-	fmt.Println("Program finished...")
+	fmt.Println("\nProgram finished...")
 }

@@ -1,10 +1,10 @@
 resources:
-  - resource_name: google
+  - name: google
     ip: "172.217.169.206"
     domain: google.com
     description: Search Engine
     
-  - resource_name: outlook
+  - name: outlook
     ip: "40.97.116.82"
     domain: outlook.com
     description: Email Provider

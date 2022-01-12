@@ -13,11 +13,21 @@ type Resource struct {
 	Description string `yaml:"description"`
 }
 
+func (i *InventoryFile) GetResourceWithName(resourceName string) *Resource {
+	for _, resource := range i.Resources {
+		if resource.Name == resourceName {
+			return &resource
+		}
+	}
+
+	return nil
+}
+
 // Checklist
 
 type Checklist struct {
-	Version   string          `yaml:"version"`
-	Checklist []ChecklistItem `yaml:"checklist"`
+	Version string          `yaml:"version"`
+	Items   []ChecklistItem `yaml:"items"`
 }
 
 type ChecklistItem struct {
