@@ -46,9 +46,9 @@ func main() {
 			}
 
 			if flagSuccedded {
-				fmt.Println("Ok:", checklistCondition.Type)
+				fmt.Printf("[Success] [%s] %s\n", checklistCondition.Type, checklistCondition.Message)
 			} else {
-				fmt.Println("Failed:", checklistCondition.Type)
+				fmt.Printf("[Failed ] [%s] %s\n", checklistCondition.Type, checklistCondition.Message)
 			}
 		}
 
