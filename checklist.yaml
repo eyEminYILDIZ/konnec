@@ -3,5 +3,5 @@ items:
   - resource_name: "google"
     conditions:
       - type: "domain_ip_resolution"
-        value: "172.217.169.206"  
+        value: "172.217.169.110"  
         message: "Resource Domain name must resolve as provided IP"

@@ -21,11 +21,13 @@ func main() {
 		checklistFilePath = os.Args[2]
 	}
 
-	// Read inventory file
+	// Read inventory and checklist files
 	inventory := filer.ReadInventory(inventoryFilePath)
 	checklist := filer.ReadChecklist(checklistFilePath)
 
+	// Check conditions
 	for _, checklistItem := range checklist.Items {
+		// Determine resource from checklist item resource name
 		matchedResource := inventory.GetResourceByName(checklistItem.ResourceName)
 		if matchedResource == nil {
 			fmt.Println("Resource Name did not matched with any inventory resource: ", checklistItem.ResourceName)
@@ -34,6 +36,7 @@ func main() {
 
 		fmt.Println("\n#", matchedResource.Name)
 
+		// Execute each condition
 		for _, checklistCondition := range checklistItem.Conditions {
 			flagSuccedded := false
 			switch checklistCondition.Type {
@@ -42,7 +45,7 @@ func main() {
 				flagSuccedded = dns_resolver.ResolveDomainIpMatching(matchedResource.Domain, checklistCondition.Value)
 
 			default:
-				fmt.Println("Condition did not matched any Konnec Feature: ", checklistCondition.Type)
+				fmt.Println("Condition did not matched with any Konnec feature name: ", checklistCondition.Type)
 			}
 
 			if flagSuccedded {
@@ -51,7 +54,6 @@ func main() {
 				fmt.Printf("[Failed ] [%s] %s\n", checklistCondition.Type, checklistCondition.Message)
 			}
 		}
-
 	}
 
 	fmt.Println("\nProgram finished...")
