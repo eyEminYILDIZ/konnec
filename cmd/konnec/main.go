@@ -15,8 +15,17 @@ func main() {
 		inventoryFilePath = os.Args[1]
 	}
 
+	// Get checklistFilePath
+	checklistFilePath := "checklist.yaml"
+	if len(os.Args) > 2 {
+		checklistFilePath = os.Args[2]
+	}
+
 	// Read inventory file
-	inventory := filer.ReadInventories(inventoryFilePath)
+	inventory := filer.ReadInventory(inventoryFilePath)
+	checklist := filer.ReadChecklist(checklistFilePath)
+
+	fmt.Println(checklist)
 
 	// Check domainName-ip matching
 	hasError, dnsResolveErrors := dns_resolver.CheckDomainNameIpMatching(inventory)
