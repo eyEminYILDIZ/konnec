@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func ReadInventory(inventoryFilePath string) *types.InventoryFile {
+func ReadInventoryFile(inventoryFilePath string) *types.InventoryFile {
 	yamlFile, err := ioutil.ReadFile(inventoryFilePath)
 	if err != nil {
 		log.Printf("yamlFile.Get err   #%v ", err)
@@ -24,7 +24,7 @@ func ReadInventory(inventoryFilePath string) *types.InventoryFile {
 	return &inventory
 }
 
-func ReadChecklist(checklistFilePath string) *types.Checklist {
+func ReadChecklistFile(checklistFilePath string) *types.Checklist {
 	yamlFile, err := ioutil.ReadFile(checklistFilePath)
 	if err != nil {
 		log.Printf("yamlFile.Get err   #%v ", err)
