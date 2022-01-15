@@ -22,8 +22,8 @@ func main() {
 	}
 
 	// Read inventory and checklist files
-	inventory := filer.ReadInventory(inventoryFilePath)
-	checklist := filer.ReadChecklist(checklistFilePath)
+	inventory := filer.ReadInventoryFile(inventoryFilePath)
+	checklist := filer.ReadChecklistFile(checklistFilePath)
 
 	// Check conditions
 	for _, checklistItem := range checklist.Items {
