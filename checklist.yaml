@@ -5,3 +5,11 @@ items:
       - type: "domain_ip_resolution"
         value: "216.58.214.142"
         message: "Resource Domain name must resolve as provided IP"
+
+      - type: "ping_to_domain"
+        value: "www.google.com"
+        message: "Ping to domain name must be succedded"
+
+      - type: "ping_to_ip"
+        value: "216.58.214.142"
+        message: "Ping to ip address must be succedded"
