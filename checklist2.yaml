@@ -1,7 +1,0 @@
-version: "konnec-v0.1"
-items:
-  - resource_name: "outlook"
-    conditions:
-      - type: "domain_ip_resolution"
-        value: "172.217.169.206"  
-        message: "Resource Domain name must resolve as provided IP"

@@ -6,6 +6,7 @@ import (
 
 	"github.com/eyEminYILDIZ/konnec/internal/dns_resolver"
 	"github.com/eyEminYILDIZ/konnec/internal/filer"
+	"github.com/eyEminYILDIZ/konnec/internal/pinger"
 )
 
 func main() {
@@ -43,6 +44,12 @@ func main() {
 
 			case "domain_ip_resolution":
 				flagSuccedded = dns_resolver.ResolveDomainIpMatching(matchedResource.Domain, checklistCondition.Value)
+
+			case "ping_to_domain":
+				flagSuccedded = pinger.PingWithDomainName(checklistCondition.Value)
+
+			case "ping_to_ip":
+				flagSuccedded = pinger.PingWithIpAddress(checklistCondition.Value)
 
 			default:
 				fmt.Println("Condition did not matched with any Konnec feature name: ", checklistCondition.Type)
