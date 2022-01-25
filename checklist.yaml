@@ -13,3 +13,13 @@ items:
       - type: "ping_to_ip"
         value: "216.58.214.142"
         message: "Ping to ip address must be succedded"
+
+  - resource_name: "json_place_holder"
+    conditions:
+      - type: "ping_to_domain"
+        value: "jsonplaceholder.typicode.com"
+        message: "Ping to domain name must be succedded"
+
+      - type: "http_checker"
+        value: "https://jsonplaceholder.typicode.com/todos/1"
+        message: "HTTP Endpoint must be return 200"

@@ -6,6 +6,7 @@ import (
 
 	"github.com/eyEminYILDIZ/konnec/internal/dns_resolver"
 	"github.com/eyEminYILDIZ/konnec/internal/filer"
+	"github.com/eyEminYILDIZ/konnec/internal/http_checker"
 	"github.com/eyEminYILDIZ/konnec/internal/pinger"
 )
 
@@ -50,6 +51,9 @@ func main() {
 
 			case "ping_to_ip":
 				flagSuccedded = pinger.PingWithIpAddress(checklistCondition.Value)
+
+			case "http_checker":
+				flagSuccedded = http_checker.CheckHttpEndpoint(checklistCondition.Value)
 
 			default:
 				fmt.Println("Condition did not matched with any Konnec feature name: ", checklistCondition.Type)
