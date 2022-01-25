@@ -3,7 +3,7 @@ resources:
     ip: "172.217.169.206"
     domain: google.com
     description: Search Engine
-    
+
   - name: outlook
     ip: "40.97.116.82"
     domain: outlook.com
